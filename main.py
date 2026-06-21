@@ -133,7 +133,7 @@ viewed_difficulty = None
 
 while True: # Infinite loop to keep the game going
     if game_started: # Mode switcher only works after playing the game once
-        while mode != "a" and mode != "c":
+        while mode != "a" and mode != "b" and mode != "c":
             mode = input("pick a valid option\nplay again ('a')\nview your statistics ('b')\nend the game ('c'): ")
             if mode != "a" and mode != "b" and mode != "c":
                 print("PLEASE enter a valid option. don't mess up")
