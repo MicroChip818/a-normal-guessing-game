@@ -31,6 +31,8 @@ py main.py
 
 Alternatively, you may run python main.py on Windows or python3 main.py on macOS and Linux.
 
+Whether you are using Git or not, you can run the main.py file manually if you are using a code editor.
+
 ## Difficulties
 Easy: 7 maximum guesses
 
