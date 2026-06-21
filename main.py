@@ -49,6 +49,8 @@ def guess(maximum_guesses, num_hints=0): # The main function of the guessing gam
     guessed_number = -1 # Placeholder value
     guesses = 0
     while guessed_number != correct_number: # Loop exits once the correct number is guessed
+        is_digit = False # Initializes variables for the input validation loop
+        is_valid = False
         if guesses > 0 and num_hints > 0: # No using a hint on the first guess
             hint_stored = []
             hint_used = hints(correct_number, num_hints)
@@ -60,10 +62,17 @@ def guess(maximum_guesses, num_hints=0): # The main function of the guessing gam
                 num_hints -= 1
             else:
                 pass
-        guessed_number = int(input("guess a number between 1 and 100: "))
-        while guessed_number < 1 or guessed_number > 100: # This line ensures the number is in the correct range
-            print("PLEASE enter a valid value between 1 and 100 again, don't mess up")
-            guessed_number = int(input("guess a number between 1 and 100: "))
+        while not is_digit or not is_valid: # Input validation loop; ensures the input is an integer and is in the correct range
+            guessed_number = input("guess a number between 1 and 100: ")
+            if not guessed_number.isdigit(): # This line ensures the input is an integer
+                print("PLEASE enter a number. don't mess up")
+            else:
+                is_digit = True
+                guessed_number = int(guessed_number)
+                if guessed_number < 1 or guessed_number > 100: # This line ensures the number is in the correct range
+                    print("PLEASE enter a valid value between 1 and 100. don't mess up")
+                else:
+                    is_valid = True
         guesses += 1
         if guesses >= maximum_guesses:
             break # Alternatively, the loop breaks if all guesses are exhausted
@@ -124,10 +133,10 @@ viewed_difficulty = None
 
 while True: # Infinite loop to keep the game going
     if game_started: # Mode switcher only works after playing the game once
-        while mode != "a" and mode != "b" and mode != "c":
+        while mode != "a" and mode != "c":
             mode = input("pick a valid option\nplay again ('a')\nview your statistics ('b')\nend the game ('c'): ")
             if mode != "a" and mode != "b" and mode != "c":
-                print("INPUT A VALID OPTION AGAIN")
+                print("PLEASE enter a valid option. don't mess up")
         if mode == "a":
             pass # Continues to the next game
         elif mode == "b":
@@ -162,7 +171,7 @@ while True: # Infinite loop to keep the game going
     while difficulty != "easy" and difficulty != "medium" and difficulty != "hard":
         difficulty = input("choose your difficulty (type 'easy', 'medium', or 'hard'): ") # A valid difficulty must be chosen
         if difficulty != "easy" and difficulty != "medium" and difficulty != "hard":
-            print("INPUT A VALID DIFFICULTY AGAIN")
+            print("PLEASE enter a valid difficulty. don't mess up")
     if difficulty == "easy":
         easy_round_data = guess(7) # up to 7 guesses, no hints
         easy_data = append_statistics(easy_round_data, easy_wins, easy_losses, easy_least_guesses) # Data tuple per difficulty
