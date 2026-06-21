@@ -12,24 +12,33 @@ To run this project, you must have Python installed on your computer. You can in
 2. Extract the full ZIP file
 3. Enter a terminal (e.g., the Command Prompt and Visual Studio Code) and run one of these lines if you're on Windows: 
 
+```bash
 py main.py
-
 python main.py
+```
 
 If you are using macOS or Linux, run:
-
+```bash
 python3.main.py
+```
 
 ### With Git
 Enter the following lines through a terminal (e.g. Visual Studio Code and PyCharm):
 
-git clone `https://github.com/MicroChip818/a-normal-guessing-game.git`
-
+```bash
+git clone https://github.com/MicroChip818/a-normal-guessing-game.git
 cd a-normal-guessing-game
-
 py main.py
+```
 
-Alternatively, you may run python main.py on Windows or python3 main.py on macOS and Linux.
+On Windows, you may also run:
+```bash
+python main.py
+```
+On Mac or Linux, you must run the following line instead:
+```bash
+python3 main.py
+```
 
 Whether you are using Git or not, you can run the main.py file manually if you are using a code editor.
 
