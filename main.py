@@ -48,15 +48,15 @@ def guess(maximum_guesses, num_hints=0): # The main function of the guessing gam
     correct_number = random.randint(1, 100)
     guessed_number = -1 # Placeholder value
     guesses = 0
-    while guessed_number != correct_number: # Loop exits once the correct number is guessed
+    while guessed_number != correct_number and guesses < maximum_guesses: # Loop exits once the correct number is guessed
         is_digit = False # Initializes variables for the input validation loop
         is_valid = False
+        hints_stored = []
         if guesses > 0 and num_hints > 0: # No using a hint on the first guess
-            hint_stored = []
             hint_used = hints(correct_number, num_hints)
-            while hint_used in hint_stored and hint_used is not None: # Ensures that a duplicate hint is not used
+            while hint_used in hints_stored and hint_used is not None: # Ensures that a duplicate hint is not used
                 hint_used = hints(correct_number, num_hints)
-            hint_stored.append(hint_used)
+            hints_stored.append(hint_used)
             if hint_used is not None:
                 print(hint_used)
                 num_hints -= 1
@@ -73,9 +73,8 @@ def guess(maximum_guesses, num_hints=0): # The main function of the guessing gam
                     print("PLEASE enter a valid value between 1 and 100. don't mess up")
                 else:
                     is_valid = True
-        guesses += 1
-        if guesses >= maximum_guesses:
-            break # Alternatively, the loop breaks if all guesses are exhausted
+                guesses += 1
+
         if guessed_number < correct_number:
             print(f"your number is too low. guess higher. also you have {maximum_guesses - guesses} guesses remaining")
         elif guessed_number > correct_number:
